@@ -6,6 +6,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import com.example.SpringBootHomework1.Facade.ManagerFacade;
 import com.example.SpringBootHomework1.beans.Course;
 import com.example.SpringBootHomework1.beans.Lecturer;
+import com.example.SpringBootHomework1.exceptions.CourseAlreadyExistsException;
+import com.example.SpringBootHomework1.exceptions.LecturerAlreadyExistsException;
 import com.example.SpringBootHomework1.exceptions.LecturerNotFoundException;
 
 @SpringBootApplication
@@ -45,7 +47,7 @@ public class SpringBootHomework1Application {
 
 			manager.addCourse(new Course("MoreJava", 100, manager.getOneLecturer(1)));
 			manager.addLecturer(new Lecturer("duplo", "nir@jbh.com"));
-		} catch (LecturerNotFoundException e) {
+		} catch (LecturerNotFoundException | CourseAlreadyExistsException | LecturerAlreadyExistsException e) {
 			System.out.println(e);
 		}
 
