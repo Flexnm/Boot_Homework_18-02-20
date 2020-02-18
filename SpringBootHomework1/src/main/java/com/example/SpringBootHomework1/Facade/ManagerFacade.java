@@ -8,9 +8,7 @@ import com.example.SpringBootHomework1.beans.Course;
 import com.example.SpringBootHomework1.beans.Lecturer;
 import com.example.SpringBootHomework1.db.CourseDBDAO;
 import com.example.SpringBootHomework1.db.LecturerDBDAO;
-import com.example.SpringBootHomework1.exceptions.CourseAlreadyExistsException;
 import com.example.SpringBootHomework1.exceptions.CourseNotFoundException;
-import com.example.SpringBootHomework1.exceptions.LecturerAlreadyExistsException;
 import com.example.SpringBootHomework1.exceptions.LecturerNotFoundException;
 
 @Component
@@ -25,12 +23,12 @@ public class ManagerFacade {
 
 	}
 
-	public void addLecturer(Lecturer lecturer) throws LecturerAlreadyExistsException {
-		for (Lecturer lec : lecDB.findAll()) {
-				if (lecturer.getEmail().equals(lec.getEmail())) {
-					throw new LecturerAlreadyExistsException();
-				}
-			}
+	public void addLecturer(Lecturer lecturer) {
+//		for (Lecturer lec : lecDB.findAll()) {
+//				if (lecturer.getEmail().equals(lec.getEmail())) {
+//					throw new LecturerAlreadyExistsException();
+//				}
+//			}
 		lecDB.save(lecturer);
 	}
 
@@ -51,14 +49,14 @@ public class ManagerFacade {
 		return lecDB.findById(id).orElseThrow(LecturerNotFoundException::new);
 	}
 
-	public void addCourse(Course course) throws CourseAlreadyExistsException {
-		if (corDB.findAll() != null) {
-			for (Course cor : corDB.findAll()) {
-				if (course.getName().equals(cor.getName())) {
-					throw new CourseAlreadyExistsException();
-				}
-			}
-		}
+	public void addCourse(Course course) {
+//		if (corDB.findAll() != null) {
+//			for (Course cor : corDB.findAll()) {
+//				if (course.getName().equals(cor.getName())) {
+//					throw new CourseAlreadyExistsException();
+//				}
+//			}
+//		}
 		corDB.save(course);
 	}
 

@@ -20,7 +20,7 @@ public class Lecturer {
 	private int id;
 	@Column
 	private String name;
-	@Column
+	@Column(unique = true)
 	private String email;
 	@OneToMany(mappedBy = "lecturer", fetch = FetchType.EAGER)
 	private List<Course> courses;
